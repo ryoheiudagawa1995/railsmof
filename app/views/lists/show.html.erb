@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>物件名:</strong>
+  <%= @list.name %>
+</p>
+
+<p>
+  <strong>賃料:</strong>
+  <%= @list.price %>円
+</p>
+
+<p>
+  <strong>住所:</strong>
+  <%= @list.place %>
+</p>
+
+<p>
+  <strong>築年数:</strong>
+  <%= @list.age %>年
+</p>
+
+<p>
+  <strong>備考:</strong>
+  <%= @list.remark %>
+</p>
+<% i = 1 %>
+<% if @list.stations.present? %>
+  <% @list.stations.each do |station| %>
+    <h3>最寄駅<%= i %></h3>
+    <% i += 1 %>
+    <p>路線名:<%= station.route %></p>
+    <p>駅名:<%= station.name %></p>
+    <p>徒歩分数:<%= station.time %>分</p>
+  <% end %>
+<% end %>
+
+<%= link_to 'Edit', edit_list_path(@list) %> |
+<%= link_to 'Back', lists_path %>
